@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+    <!--    Calendar-->
+    <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.js"
+            integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
+          integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w" crossorigin="anonymous">
+</head>
+<body>
+<main class="main">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light rounded">
+        <th:block th:include="~{/fragments/home-nav}"></th:block>
+    </nav>
+    <div class="container mt-lg-5 border-right border-bottom bg-transparent h-100">
+        <h1 class="w-100 text-light text-right">Profile</h1>
+    </div>
+
+    <div class="expense-details container-fluid">
+        <div style="color:orange" class="text-center mt-5">
+            <h1>Your Expenses</h1>
+            <hr/>
+        </div>
+        <div>
+            <div class="offers row mx-auto d-flex flex-col">
+                <div th:each="e : ${expenses}" th:object="${e}" class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
+                    <a th:href="@{/wallet/profile/(id = *{id})}">
+                        <div class="card-body pb-1">
+                            <h5 style="color:orange" class="card-title text-center" >•Type•</h5>
+                            <h5 class="card-title text-center" th:text="|*{#strings.capitalize(#strings.toLowerCase(category))}">Item name</h5>
+                            <hr>
+                        </div>
+                        <div class="card-body pb-1">
+                            <h5 style="color:orange" class="card-title text-center" >•Transaction•</h5>
+                            <h5 class="card-title text-center" th:text="|*{#strings.capitalize(#strings.toLowerCase(transaction))}">Item name</h5>
+                        </div>
+                        <ul class="offer-details list-group-add list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="card-text text-center"><span th:text="'$' + *{amount}"></span></div>
+                            </li>
+                        </ul>
+                        <ul class="offer-details list-group-add list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="card-text text-center"><span th:text="|*{#dates.format(date, 'dd.MM.yyyy, HH:mm')}|"></span></div>
+                            </li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div style="color:orange" class="text-center mt-5">
+            <h1>Your Incomes</h1>
+            <hr/>
+        </div>
+        <div>
+            <div class="offers row mx-auto d-flex flex-col">
+                <div th:each="i : ${incomes}" th:object="${i}" class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
+
+                    <a th:href="@{/wallet/profile/(id = *{id})}">
+                        <div class="card-body pb-1">
+                            <h5 style="color:orange" class="card-title text-center" >•Type•</h5>
+                            <h5 class="card-title text-center" th:text="|*{#strings.capitalize(#strings.toLowerCase(category))}">Item name</h5>
+                            <hr>
+                        </div>
+                        <div class="card-body pb-1">
+                            <h5 style="color:orange" class="card-title text-center" >•Transaction•</h5>
+                            <h5 class="card-title text-center" th:text="|*{#strings.capitalize(#strings.toLowerCase(transaction))}">Item name</h5>
+                        </div>
+                        <ul class="offer-details list-group-add list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div style="color:orange" class="card-text text-center"><span th:text="'$' + *{amount}"></span></div>
+                            </li>
+                        </ul>
+                        <ul class="offer-details list-group-add list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="card-text text-center"><span th:text="|*{#dates.format(date, 'dd.MM.yyyy, HH:mm')}|"></span></div>
+                            </li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</main>
+<footer class="row">
+    <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>

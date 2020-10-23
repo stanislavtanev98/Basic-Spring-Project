@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+    <!--    Calendar-->
+    <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.js"
+            integrity="sha384-0LaRLH/U5g8eCAwewLGQRyC/O+g0kXh8P+5pWpzijxwYczD3nKETIqUyhuA8B/UB"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.4/source/jsCalendar.min.css"
+          integrity="sha384-44GnAqZy9yUojzFPjdcUpP822DGm1ebORKY8pe6TkHuqJ038FANyfBYBpRvw8O9w" crossorigin="anonymous">
+</head>
+<body>
+<main class="main">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light rounded">
+        <th:block th:include="~{/fragments/home-nav}"></th:block>
+    </nav>
+    <div class="container mt-lg-5 border-right border-bottom bg-transparent h-100">
+        <h1 class="w-100 text-light text-right">Add Money</h1>
+    </div>
+    <div class="row tm-mt-big">
+        <div class="col-12 mx-auto tm-login-col">
+            <div class="bg-blue tm-block">
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div class="container">
+                            <form th:action="@{/wallet/income}" th:method="POST"
+                                  th:object="${income}"
+                                  class="mx-auto col-md-6 d-flex flex-column justify-content-center">
+
+                                <div class="form-group ">
+                                    <div class="text-white label-holder d-flex justify-content-center">
+                                        <label class="h4 mb-2" for="category">Income Type</label>
+                                    </div>
+                                    <select class="browser-default custom-select" id="category" name="category">
+                                        <option value="">Select type</option>
+                                        <option th:each="o : ${T(org.example.wallet.models.entities.IncomeCategory).values()}"
+                                                th:text="${o}" th:value="${o}">Income Type
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="mx-auto text-center">
+                                    <small th:if="${existingCategory}" class="text-danger">You must select
+                                        category.</small>
+                                    <hr/>
+                                </div>
+                                <div class="form-group">
+                                    <div class="text-white label-holder d-flex justify-content-center">
+                                        <label class="h4 mb-2" for="transaction">Transaction</label>
+                                    </div>
+                                    <select class="browser-default custom-select" id="transaction" name="transaction">
+                                        <option value="">Select type</option>
+                                        <option th:each="o : ${T(org.example.wallet.models.entities.Transaction).values()}"
+                                                th:text="${o}" th:value="${o}">Transaction
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="mx-auto text-center">
+                                    <small th:if="${existingTransaction}" class="text-danger">You must select
+                                        Transaction</small>
+                                    <hr/>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="text-white label-holder d-flex justify-content-center">
+                                        <label for="amount" class="h4 mb-2">Amount</label>
+                                    </div>
+                                    <input type="number" class="form-control" id="amount" name="amount"/>
+                                </div>
+                                <div class="mx-auto text-center">
+                                    <small th:if="${negativeAmount}" class="text-danger">Please enter valid
+                                        amount.</small>
+                                    <hr/>
+                                </div>
+
+                                <div class="button-holder d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-secondary text-white mb-3">Add Money</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="row">
+    <th:block th:include="~{/fragments/footer}"></th:block>
+</footer>
+</body>
+</html>

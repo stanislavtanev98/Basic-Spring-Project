@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded">
+                    <th:block th:include="~{/fragments/nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container mt-lg-5 border-right border-bottom bg-transparent h-100">
+                <h1 class="w-100 text-light text-right">Welcome</h1>
+        </div>
+
+        <div style="color:orange" class="text-center mt-5">
+            <h1>Welcome to GTS Wallet!</h1>
+            <hr class="my-3"/>
+            <p class="h4">Here you can manage your finances.</p>
+            <hr class="my-3"/>
+            <h3>
+                <a class="text-primay" href="/users/login">Login</a>
+                if you have an account or
+                <a class="text-primay" href="/users/register">Register</a>
+                to start using your wallet.
+            </h3>
+        </div>
+
+        <footer class="row">
+            <th:block th:include="~{/fragments/footer}"></th:block>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>

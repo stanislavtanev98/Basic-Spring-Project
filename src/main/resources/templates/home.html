@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+
+<body id="reportsPage">
+<div class="" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light rounded">
+                    <th:block th:include="~{/fragments/home-nav}"></th:block>
+                </nav>
+            </div>
+        </div>
+
+        <div style="color:orange" class="text-center mt-5">
+            <h2>Hello and welcome to your Wallet!</h2>
+            <hr class="my-3"/>
+            <p class="h3">You can manage your finances here.</p>
+            <hr class="my-3"/>
+<!--            <div th:object="${statistic}" class="tm-login-form">-->
+<!--                <div class="card-body pb-1">-->
+<!--                    <h4 style="color:orange" class="card-title text-center" >•The BALANCE of your wallet:•</h4>-->
+<!--                    <h3 class="card-title text-center" th:text="'Current amount: $' + *{currentAmount}"></h3>-->
+<!--                    <h3 class="card-title text-center" th:text="'Total incomes: $' + *{totalIncomes}"></h3>-->
+<!--                    <h3 class="card-title text-center" th:text="'Total expenses: $' + *{totalExpenses}"></h3>-->
+<!--                </div>-->
+<!--            </div>-->
+            <h5>
+                <a class="text-primay" href="/wallet/expense">Expense</a>
+                to remove money from your wallet.
+                <a class="text-primay" href="/wallet/income">Add</a>
+                to add some fresh money to your wallet. It wants it.
+            </h5>
+        </div>
+        <footer class="row">
+            <th:block th:include="~{/fragments/footer}"></th:block>
+        </footer>
+    </div>
+</div>
+</body>
+</html>
