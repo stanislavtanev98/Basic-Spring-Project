@@ -10,5 +10,5 @@ public interface IncomeService {
 
     void addMoney(User user, Income income);
 
-    Collection<Income> getIncomes(User user);
+    Collection<Income> getIncomes();
 }

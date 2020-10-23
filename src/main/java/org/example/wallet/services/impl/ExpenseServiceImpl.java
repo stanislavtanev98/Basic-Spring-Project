@@ -1,7 +1,6 @@
 package org.example.wallet.services.impl;
 
 import org.example.wallet.models.entities.Expense;
-import org.example.wallet.models.entities.Statistic;
 import org.example.wallet.models.entities.User;
 import org.example.wallet.models.entities.Wallet;
 import org.example.wallet.repositories.ExpenseRepository;
@@ -30,9 +29,6 @@ public class ExpenseServiceImpl implements ExpenseService {
         }
         Wallet wallet = user.getWallet();
         expense.setWallet(wallet);
-        Statistic statistic = wallet.getStatistic();
-        statistic.setTotalExpenses(statistic.getTotalExpenses().add(expense.getAmount()));
-        statistic.setCurrentAmount(statistic.getCurrentAmount().subtract(expense.getAmount()));
         this.expenseRepository.saveAndFlush(expense);
     }
 

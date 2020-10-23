@@ -8,7 +8,6 @@ import java.util.Set;
 public class Wallet extends BaseEntity {
 
     private User user;
-    private Statistic statistic;
     private Set<Expense> expenses;
     private Set<Income> incomes;
 
@@ -40,14 +39,5 @@ public class Wallet extends BaseEntity {
 
     public void setIncomes(Set<Income> incomes) {
         this.incomes = incomes;
-    }
-
-    @OneToOne(mappedBy = "wallet", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    public Statistic getStatistic() {
-        return statistic;
-    }
-
-    public void setStatistic(Statistic statistic) {
-        this.statistic = statistic;
     }
 }
